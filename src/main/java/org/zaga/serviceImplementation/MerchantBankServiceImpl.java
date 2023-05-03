@@ -1,5 +1,5 @@
 package org.zaga.serviceImplementation;
 
-public class OrderDetailsServiceImpl {
+public class MerchantBankServiceImpl {
     
 }

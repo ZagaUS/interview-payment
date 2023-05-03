@@ -3,10 +3,11 @@ package org.zaga.kafka;
 import io.quarkus.runtime.StartupEvent;
 // import org.eclipse.microprofile.reactive.messaging.*;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.event.Observes;
-import jakarta.inject.Inject;
+
 import java.util.stream.Stream;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 
 @ApplicationScoped
 public class MyReactiveMessagingApplication {
