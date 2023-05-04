@@ -9,6 +9,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.zaga.dto.CreditCardDto;
 import org.zaga.entity.CreditCard;
 import org.zaga.service.CreditCardService;
 
@@ -21,14 +22,17 @@ public class CreditCardResource {
     @Inject
     CreditCardService service;
 
-    @GET
-    @Path("/verify")
-    public Response verifyAccount(@QueryParam("card_number") String card_number, @QueryParam("cvv") String cvv, @QueryParam("expiry_date")String expiry_date,@QueryParam("name") String name ){
-        CreditCard card = service.verifyAccount(card_number, cvv, expiry_date, name);
-        System.out.println("-------------------");
-        System.out.println(card);
-        return Response.ok(card).build();
-    }
+    @Inject
+    CreditCardDto dto;
+
+    // @GET
+    // @Path("/verify")
+    // public Response verifyAccount(CreditCardDto dto){
+    //     CreditCard card = service.verifyAccount(dto);
+    //     System.out.println("-------------------");
+    //     System.out.println(card);
+    //     return Response.ok(card).build();
+    // }
 
     
 }

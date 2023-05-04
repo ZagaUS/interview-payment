@@ -1,5 +1,6 @@
 package org.zaga.entity;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@ApplicationScoped
 public class CreditCard extends PanacheEntity {
 
     @Column(nullable = false)
@@ -29,4 +31,8 @@ public class CreditCard extends PanacheEntity {
     @Column(nullable = false)
     private String customer_account_number;
     
+
+    public CreditCard findByName(String name){
+        return find("name", name).firstResult();
+    }
 }
