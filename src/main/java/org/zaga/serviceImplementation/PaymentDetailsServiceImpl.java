@@ -2,6 +2,7 @@ package org.zaga.serviceImplementation;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.ws.rs.WebApplicationException;
 
 import org.eclipse.microprofile.reactive.messaging.Channel;
@@ -24,8 +25,20 @@ public class PaymentDetailsServiceImpl implements PaymentDetailsService{
     PaymentDetailsRepository repo;
 
     @Inject
-    @Channel("mail-out")
+    @Channel("creditcard-details")
     Emitter<Object> emitter;
+
+    @Inject
+    @Channel("upi-details")
+    Emitter<Object> emitter1;
+
+    @Inject
+    @Channel("merchant-account-number")
+    Emitter<String> emitter3;
+
+    @Inject
+    @Channel("amount-details")
+    Emitter<Double> emitter4;
 
     @Inject
     CreditCardDto dto;
@@ -35,44 +48,42 @@ public class PaymentDetailsServiceImpl implements PaymentDetailsService{
 
 
     @Override
+    @Transactional
     public PaymentDetails createPaymentDetails(PaymentDetails details) {
-        System.out.println("----------------" +details.getPayment_type());
-        // try{
+       
 
         if(details.getPayment_type().equalsIgnoreCase("CreditCardPayment")){
-            System.out.println("-------------");
+            System.out.println("-----------");
+        System.out.println("Payment Type "+details.getPayment_type());
         CreditCardDto dto = new CreditCardDto();    
-        dto.setAmount(details.getAmount());
         dto.setCard_number(details.getCard_number());
         dto.setCvv(details.getCvv());
         dto.setExpiry_date(details.getExpiry_date());
         dto.setName(details.getName());
-        System.out.println("-----------------------------");
-        System.out.println(dto);
-        // emitter.send(dto);
         emitter.send(dto);
         
-    }
+        }
 
-    else if(details.getPayment_type().equalsIgnoreCase("UPIPayment")){
+        if(details.getPayment_type().equalsIgnoreCase("UPIPayment")){
         System.out.println("-----------");
+        System.out.println("Payment Type "+details.getPayment_type());
         UPIDto dto2 = new UPIDto();
-        dto2.setAmount(details.getAmount());
         dto2.setName(details.getName());
         dto2.setUpi_id(details.getUpi_id());
-        // emitter.send("hai from dto2");
-        emitter.send(dto2);
+        emitter1.send(dto2);
     
-    }
+        }
+
+
+        Double orderAmount = details.getAmount();
+        emitter4.send(orderAmount);
+        String merchantAccountNumber = details.getMerchant_account_number();
+        emitter3.send(merchantAccountNumber);
 
         PaymentDetails.persist(details);      
         return details;
 
-        }
-        // catch(Exception e){
-        //     return WebApplicationException
-            
-        // }
+    }
 
     }
 

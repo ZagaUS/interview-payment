@@ -4,5 +4,5 @@ import org.zaga.entity.UPI;
 
 public interface UPIService {
     
-    UPI verifyAccount(String upi_id, String name);
+    // UPI verifyAccount(String upi_id, String name);
 }

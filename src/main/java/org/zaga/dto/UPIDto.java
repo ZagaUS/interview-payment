@@ -14,6 +14,6 @@ public class UPIDto {
 
     private String name;
     private String upi_id;
-    private String amount;
+    // private String amount;
     
 }

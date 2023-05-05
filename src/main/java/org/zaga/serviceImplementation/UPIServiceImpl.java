@@ -12,11 +12,11 @@ public class UPIServiceImpl implements UPIService{
     @Inject
     UPIRepository repo;
 
-    @Override
-    public UPI verifyAccount(String upi_id,String name) {
-        UPI upi = repo.getUPIDetails(upi_id, name);
-        return upi;
+    // @Override
+    // public UPI verifyAccount(String upi_id,String name) {
+    //     UPI upi = repo.getUPIDetails(upi_id, name);
+    //     return upi;
 
-    }
+    // }
     
 }

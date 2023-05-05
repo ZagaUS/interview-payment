@@ -1,5 +1,6 @@
 package org.zaga.entity;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
@@ -32,6 +33,7 @@ import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@ApplicationScoped
 @Entity
 @Data
 public class PaymentDetails extends PanacheEntity {
@@ -49,7 +51,7 @@ public class PaymentDetails extends PanacheEntity {
     private String payment_type;
 
     @Column(nullable = false)
-    private String amount;
+    private Double amount;
 
     @Column(nullable = true)
     private String card_number;

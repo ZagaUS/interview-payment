@@ -1,5 +1,6 @@
 package org.zaga.entity;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ApplicationScoped
 @Entity
 public class UPI extends PanacheEntity {
 

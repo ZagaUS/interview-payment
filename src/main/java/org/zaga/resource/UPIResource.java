@@ -17,17 +17,17 @@ import org.zaga.service.UPIService;
 @Consumes(MediaType.APPLICATION_JSON)
 public class UPIResource {
     
-    @Inject
-    UPIService service;
+    // @Inject
+    // UPIService service;
 
-    @GET
-    @Path("/verify")
-    public Response verifyAccount(@QueryParam("name") String name, @QueryParam("upi_id") String upi_id){
-        UPI upi = service.verifyAccount(upi_id, name);
-        System.out.println("-------------------");
-        System.out.println(upi);
-        return Response.ok(upi).build();
+    // @GET
+    // @Path("/verify")
+    // public Response verifyAccount(@QueryParam("name") String name, @QueryParam("upi_id") String upi_id){
+    //     UPI upi = service.verifyAccount(upi_id, name);
+    //     System.out.println("-------------------");
+    //     System.out.println(upi);
+    //     return Response.ok(upi).build();
 
-    }
+    // }
 
 }

@@ -31,8 +31,4 @@ public class CreditCard extends PanacheEntity {
     @Column(nullable = false)
     private String customer_account_number;
     
-
-    public CreditCard findByName(String name){
-        return find("name", name).firstResult();
-    }
 }

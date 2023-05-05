@@ -19,6 +19,6 @@ public class CreditCardDto {
     private String card_number;
     private String expiry_date;
     private String cvv;
-    private String amount;
+ 
     
 }

@@ -30,7 +30,7 @@ public class MerchantBankAccount extends PanacheEntity{
     private String ifsc_code;
 
     @Column(nullable = false)
-    private String bank_balance;
+    private Double bank_balance;
 
 
 
